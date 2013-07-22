@@ -42,7 +42,7 @@ public abstract class NecroEntityQuadruped extends NecroEntityBase {
     @Override
     public BodyPart[] initArmLeft(ModelBase model) {
         BodyPart armLeft = new BodyPart(this, model, 0, 16);
-        armLeft.addBox(0.0F, 0.0F, -2.0F, 4, size, 4, 0.0F);
+        armLeft.addBox(0.0F, 0.0F, -1.0F, 4, size, 4, 0.0F);
         armLeft.setTextureSize(textureWidth, textureHeight);
         armLeft.mirror = true;
         return new BodyPart[] { armLeft };
@@ -51,7 +51,7 @@ public abstract class NecroEntityQuadruped extends NecroEntityBase {
     @Override
     public BodyPart[] initArmRight(ModelBase model) {
         BodyPart armRight = new BodyPart(this, model, 0, 16);
-        armRight.addBox(0.0F, 0.0F, -2.0F, 4, size, 4, 0.0F);
+        armRight.addBox(0.0F, 0.0F, -1.0F, 4, size, 4, 0.0F);
         armRight.setTextureSize(textureWidth, textureHeight);
         return new BodyPart[] { armRight };
     }
@@ -60,9 +60,11 @@ public abstract class NecroEntityQuadruped extends NecroEntityBase {
     public BodyPart[] initLegs(ModelBase model) {
         float[] torsoPos = { -4F, 4F, 0F };
         BodyPart legLeft = new BodyPart(this, torsoPos, model, 0, 16);
-        legLeft.addBox(-5.0F, 16.0F, 1.0F, 4, 24 - size, 4, 0.0F);
+        legLeft.addBox(-2.0F, 0.0F, -2.0F, 4, size, 4, 0.0F);
+        legLeft.setRotationPoint(-3.0F, (float)22-size, 3.0F);
         BodyPart legRight = new BodyPart(this, torsoPos, model, 0, 16);
-        legRight.addBox(1.0F, 16.0F, 1.0F, 4, size, 4, 0.0F);
+        legRight.addBox(-2.0F, 0.0F, -2.0F, 4, size, 4, 0.0F);
+        legRight.setRotationPoint(3.0F, (float)22-size, 3.0F);
         legLeft.setTextureSize(textureWidth, textureHeight);
         legRight.setTextureSize(textureWidth, textureHeight);
         legLeft.mirror = true;
@@ -88,7 +90,7 @@ public abstract class NecroEntityQuadruped extends NecroEntityBase {
         }
         if (string.equals("legs")) {
             bodypart[0].rotateAngleX = MathHelper.cos(par1 * 0.6662F) * 1.4F * par2;
-            bodypart[1].rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float) Math.PI) * 1.4F * par2;
+            bodypart[1].rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float)Math.PI) * 1.4F * par2;
             bodypart[0].rotateAngleY = 0.0F;
             bodypart[1].rotateAngleY = 0.0F;
         }

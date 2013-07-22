@@ -1,9 +1,12 @@
 package com.sirolf2009.necroapi;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
 /**
  * The base class for all the necro mobs
@@ -23,7 +26,7 @@ public abstract class NecroEntityBase {
         textureHeight = 32;
         try {
             Class.forName("com.sirolf2009.necromancy.Necromancy");
-            organs = Item.itemsList[organID + 256];
+            organs = Item.itemsList[organID];
             isNecromancyInstalled = true;
             initRecipes();
         } catch (ClassNotFoundException e) {
@@ -36,9 +39,9 @@ public abstract class NecroEntityBase {
     public void initRecipes() {
     }
 
-    /** Define your recipes here */
-    public void initDefaultRecipes(Item... items) {
-        Item headItem = null, torsoItem = null, armItem = null, legItem = null;
+    /** Use this to define the default recipes */
+    public void initDefaultRecipes(Object... items) {
+        Object headItem = null, torsoItem = null, armItem = null, legItem = null;
         if(items.length==1)
             headItem = torsoItem = armItem = legItem = items[0];
         else {
@@ -164,6 +167,7 @@ public abstract class NecroEntityBase {
      * @param model
      *            - the model
      */
+    @SideOnly(Side.CLIENT)
     public void preRender(Entity entity, BodyPart[] parts, String location, ModelBase model) {
     }
 
@@ -179,13 +183,14 @@ public abstract class NecroEntityBase {
      * @param model
      *            - the model
      */
+    @SideOnly(Side.CLIENT)
     public void postRender(Entity entity, BodyPart[] parts, String location, ModelBase model) {
     }
-
+    
     /** The name for your mob */
     public String mobName;
     /** The location of the mobs texture file */
-    public String texture;
+    public ResourceLocation texture;
     /** The item assigned to your mobs head */
     public ItemStack headItem;
     /** The item assigned to your mobs torso */

@@ -2,6 +2,7 @@ package com.sirolf2009.necroapi;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
 /**
  * An example class
@@ -17,7 +18,7 @@ public class NecroEntityZombie extends NecroEntityBiped {
         torsoItem = new ItemStack(Item.rottenFlesh, 1);
         armItem = new ItemStack(Item.rottenFlesh, 1);
         legItem = new ItemStack(Item.rottenFlesh, 1);
-        texture = "/mob/zombie.png";
+        texture = new ResourceLocation("/mob/zombie.png");
         textureHeight = 64;
     }
 
