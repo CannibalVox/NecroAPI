@@ -72,22 +72,22 @@ public abstract class NecroEntityBiped extends NecroEntityBase {
     }
 
     @Override
-    public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity, BodyPart[] bodypart, String string) {
-        if (string.equals("head")) {
+    public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity, BodyPart[] bodypart, BodyPartLocation location) {
+        if (location == BodyPartLocation.Head) {
             bodypart[0].rotateAngleY = par4 / (180F / (float) Math.PI);
             bodypart[0].rotateAngleX = par5 / (180F / (float) Math.PI);
             bodypart[1].rotateAngleY = par4 / (180F / (float) Math.PI);
             bodypart[1].rotateAngleX = par5 / (180F / (float) Math.PI);
         }
-        if (string.equals("armLeft")) {
+        if (location == BodyPartLocation.ArmLeft) {
             bodypart[0].rotateAngleX = MathHelper.cos(par1 * 0.6662F) * 2.0F * par2 * 0.5F;
             bodypart[0].rotateAngleZ = 0.0F;
         }
-        if (string.equals("armRight")) {
+        if (location == BodyPartLocation.ArmRight) {
             bodypart[0].rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float) Math.PI) * 2.0F * par2 * 0.5F;
             bodypart[0].rotateAngleZ = 0.0F;
         }
-        if (string.equals("legs")) {
+        if (location == BodyPartLocation.Legs) {
             bodypart[0].rotateAngleX = MathHelper.cos(par1 * 0.6662F) * 1.4F * par2;
             bodypart[1].rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float) Math.PI) * 1.4F * par2;
             bodypart[0].rotateAngleY = 0.0F;
